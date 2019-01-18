@@ -1,8 +1,9 @@
 #pragma once
+#include "StateMachine.h"
 #include "Renderer2D.h"
-#include "Player.h"
+#include "GameState.h"
 
-class GameSauce
+class GameSauce : public StateMachine
 {
 public:
 	GameSauce();
@@ -11,7 +12,10 @@ public:
 	void Update(float fDeltaTime);
 	void Draw(aie::Renderer2D* pRenderer);
 
+	void PauseActiveState();
+	void ResumePausedState();
+
 private:
-	Player* m_pPlayer;
+	GameState* m_pPausedState;
 };
 
